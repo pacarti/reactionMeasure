@@ -7,14 +7,15 @@ def get_input(input_queue, stop_thread):
             input_queue.put(sys.stdin.readline().strip())
             break
 
-import time, random, threading, queue, sys, select
+import time, random, threading, queue, sys, select, os
 
-# Display the program's instructions.
-print('Press ENTER to begin. Afterward, press ENTER when you will see the "NOW" message.')
 
-input()                     # press Enter to begin
 
 try:
+    # Display the program's instructions.
+    print('Press ENTER to begin. Afterward, press ENTER when you will see the "NOW" message.')
+
+    input()                     # press Enter to begin
     while True:
         print('Started.')
         # Avoid incorrect result caused by hitting Enter button too quickly by using queue and threading.
@@ -49,4 +50,4 @@ try:
 except KeyboardInterrupt:
     # Handle the Ctrl-C exception to keep its error message from displaying.
     print('\nDone')
-    # os._exit(0)
+    os._exit(0)     # Ensure to quit the script at this moment
